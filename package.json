@@ -1,12 +1,20 @@
 {
-  "name": "@workspace/api-zod",
+  "name": "workspace",
   "version": "0.0.0",
+  "license": "MIT",
   "private": true,
-  "type": "module",
-  "exports": {
-    ".": "./src/index.ts"
+  "scripts": {
+    "install:site": "npm --prefix ./artifacts/sicariostore install --legacy-peer-deps",
+    "install:api": "npm --prefix ./artifacts/api-server install --legacy-peer-deps",
+    "start": "npm run install:site && npm --prefix ./artifacts/sicariostore run dev -- --host 0.0.0.0 --port 18212",
+    "build": "npm run install:site && npm --prefix ./artifacts/sicariostore run build",
+    "typecheck": "npm --prefix ./artifacts/sicariostore run typecheck"
   },
   "dependencies": {
-    "zod": "^3.25.76"
+    "@replit/connectors-sdk": "^0.4.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6",
+    "typescript": "~5.9.3"
   }
 }
